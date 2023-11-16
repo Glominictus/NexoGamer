@@ -25,4 +25,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
 uploads/
+=======
+>>>>>>> ef45907d28d668a75f71b1d3294b4f0dd14aebb9

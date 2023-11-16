@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 require('dotenv').config();
 const express = require("express");
 const app = express();
@@ -39,6 +40,22 @@ const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
+=======
+const express = require('express');
+const app = express();
+const cors = require('cors');
+
+// Middlewares
+app.use(express.json()); // Para parsear application/json
+app.use(express.urlencoded({ extended: true })); // Para parsear application/x-www-form-urlencoded
+
+app.use(cors());
+
+const port = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+>>>>>>> ef45907d28d668a75f71b1d3294b4f0dd14aebb9
 });
 
 app.listen(port, () => {
