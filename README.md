@@ -18,7 +18,7 @@ NexoGamer es una plataforma de intercambio y venta de videojuegos que conecta a 
 Para configurar el entorno de desarrollo y ejecutar NexoGamer localmente, sigue estos pasos:
 
 ```bash
-git clone https://tu-repositorio-aqui.git
+git clone https://github.com/Glominictus/NexoGamer
 cd nexo-gamer
 # Instalar dependencias para el servidor
 cd server

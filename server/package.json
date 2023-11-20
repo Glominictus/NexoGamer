@@ -11,7 +11,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-<<<<<<< HEAD
     "axios": "^1.6.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -22,12 +21,10 @@
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.6.3",
-    "sequelize": "^6.34.0"
-=======
+    "sequelize": "^6.34.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "helmet": "^7.1.0"
->>>>>>> ef45907d28d668a75f71b1d3294b4f0dd14aebb9
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
