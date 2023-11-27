@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/*Estilos Generales*/
+body {
+    background-color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+/**HEADER**/
+
+.cabecera {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #0a215c;
+    height: 300px;
+    padding: 0 20px;
+}
+
+#img_cabecera {
+    width: 20%;
+}
+
+#img_cabecera img {
+    width: 100%;
+    height: auto;
+}
+
+.cabecera-content {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cabecera-content h1 {
+    font-size: 2em;
+    color: #ffcc00;
+    margin-bottom: 10px;
+    font-family: 'Orbitron';
+}
+
+
+
+.join-button:hover {
+    background-color: #0a215c;
+
+}
+
+.join-button a {
+    text-decoration: none;
+    color: red;
+
+}
+
+.join-button a:hover {
+    color: white;
+}
+/*Menú de Navegación*/
+
+.main__nav {
+    display: flex;
+    align-items: center;
+    height: auto;
+    background-color: #0044ff;
+}
+.nav-container{
+    width: 100%;
+}
+/*Zona del logo*/
+.main__nav_logo {
+    flex: 0 0 120px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 10%
+}
+
+#logo {
+    max-width: 120px;
+    max-height: 120px;
+}
+/*Buscador*/
+.buscador-container {
+    margin-top:15px;
+    display: flex;
+    justify-content: center;
+    background-color: #0044ff;
+    padding: 0 20px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.buscador-inner {
+    position: relative;
+    border-radius:10px;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    height:40px;
+}
+.buscador-select {
+    font-family: Orbitron;
+    font-size:15px;
+    padding: 6px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 10px 0 0 10px;
+    border:none;
+    outline:none
+}
+.buscador-input {
+    font-family: Orbitron;
+    font-size:15px;
+      width:300px;
+      padding:6px;
+      background-color: rgba(255,255,255,0.8);
+      border:none;
+      outline:none;
+      overflow:visible;
+  }
+
+
+  .buscador-button {
+    font-size:22px;
+    padding : 6px 12px;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 0 10px 10px 0;
+    border:none;
+    outline:none
+}
+/*Menú de Navegación*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    /* separa los elementos del menú y los enlaces de sesión */
+    align-items: center;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    margin-left: 20em;
+    margin-top: 10px;
+}
+
+.login {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 0;
+}
+
+
+.nav-item {
+    margin: 0 10px;
+    margin-left:20px;
+    
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content a {
+    color: white;
+    font-size:16px;
+    font-family: 'Orbitron';
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:#0a215c;
+    min-width: 160px;
+    color:white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropbtn {
+    background-color: #0044ff; /* Change to match your button color */
+    color: white;
+    padding: 10px;
+    font-size:18px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Orbitron';
+    margin-left:20px;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.navbar .nav-item {
+    font-size:18px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-item{
+    padding:10px;
+  }
+
+  .modal {
+    position: fixed; /* Se fija en la pantalla y no se mueve con el scroll */
+    top: 10%;
+    right: 7%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
+    display: flex; /* Esto permite centrar el contenido fácilmente */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    z-index: 10; /* Asegúrate de que sea mayor que el resto de los elementos */
+}
+
+
+.modal-content {
+    width: 340px; /* O el ancho que prefieras */
+    padding: 20px;
+    height:380px;
+    background: #fff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
+    z-index: 11; /* Mayor que el fondo del modal para que resalte */
+}
+
+.modal-title{
+    font-size:17px;
+    margin-bottom:20px;
+}
+.icon {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+    vertical-align: middle; /* Alinea verticalmente el ícono con el texto */
+    color:blue;
+  }
+  
+  /* Si necesitas ajustar el tamaño del ícono */
+  .bi-person-circle {
+    font-size: 40px; /* O el tamaño que prefieras */
+  }
+  
+
+.form-group {
+    margin-top: 10px;
+    margin-bottom: 15px; /* Espacio entre grupos de formulario */
+}
+
+.form-group label {
+    display: block; /* Hace que la etiqueta aparezca encima del input */
+    margin-bottom: 5px; /* Espacio entre la etiqueta y el input */
+    font-size:12px;
+    font-weight: bolder;
+}
+
+.form-group input {
+    width: 100%; /* Hace que el input ocupe el ancho completo del grupo de formulario */
+    padding: 8px; /* Añade algo de padding para que el input sea más fácil de interactuar */
+    margin-bottom: 10px; /* Espacio después del input */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+button[type="submit"] {
+    padding: 10px; /* Añade padding al botón */
+    border: none; /* Elimina el borde */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: #0056b3; /* Color de fondo */
+    color: white; /* Color de texto */
+    margin-bottom: 10px; /* Espacio después del botón */
+    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+}
+
+button[type="submit"]:hover {
+    background-color: #004494; /* Oscurece el botón al pasar el mouse */
+}
+.action-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.forgot-password {
+    background: none;
+    border: none;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: auto;
+}
+.form-login{
+    margin-top: 25px;
+}
+
+.modal-footer{
+    text-align: center;
+}
+
+.nav-item.perfil,
+.nav-item.logout,
+.nav-item.login,
+.nav-item.register{
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.modal-register {
+    position: fixed; /* Se fija en la pantalla y no se mueve con el scroll */
+    top: 10%;
+    right: 7%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
+    display: flex; /* Esto permite centrar el contenido fácilmente */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    z-index: 10; /* Asegúrate de que sea mayor que el resto de los elementos */
+}
+
+
+.modal-content-register {
+    width: 340px; /* O el ancho que prefieras */
+    padding: 20px;
+    height:520px;
+    background: #fff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
+    z-index: 11; /* Mayor que el fondo del modal para que resalte */
+}
+.error{
+    color:red;
+    font-size:12px;
+}
+.success-message{
+    color:green;
+    font-size:12px;
+}
+.perfil-dropdown .dropbtn{
+    margin-top: 12px;
+    font-size: 16px;
+    margin-right:30px;
+}
+.mis-anuncios {
+    margin: 20px;
+    text-align: center;
+}
+
+.mis-anuncios h1 {
+    margin-bottom: 20px;
+}
+
+.btn-create-anuncio {
+    background-color: #ffcc00;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s, color 0.3s;
+    cursor:pointer;
+}
+
+.btn-create-anuncio:hover {
+    font-size:1.3em;
+}
+.new-anuncio-tittle{
+    margin-top: 30px;
+    text-align: center;
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    height: auto;
+}
+
+.form-container form {
+    margin-top: 20px;
+    width: 30%; /* Ancho del formulario */
+    padding: 20px; /* Espaciado interior para el formulario */
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Opcional: sombra para dar profundidad */
+    background-color: white; /* Opcional: fondo del formulario */
+    border-radius: 10px; /* Opcional: bordes redondeados */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Espacio entre grupos de formularios */
+}
+
+.form-group label {
+    display: block; /* Hace que la etiqueta aparezca encima del input/select */
+    margin-bottom: 5px; /* Espacio entre la etiqueta y el input/select */
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+    width: 100%; /* Hace que el input/select/textarea ocupe el ancho completo */
+    padding: 8px; /* Añade algo de padding para que sea más fácil de interactuar */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+.radio-group {
+ margin-bottom: 15px; /* Espacio entre el grupo de radio y otros elementos */
+}
+
+.radio-group label {
+    margin-right: 20px; /* Espacio entre cada botón de radio */
+    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+}
+
+.radio-group input[type="radio"] {
+    margin-top: 10px;
+    margin-right: 5px; /* Espacio entre el botón de radio y su etiqueta */
+}
+.form-group textarea {
+    height: 150px; /* Altura inicial */
+    resize: none; /* Permite al usuario cambiar la altura */
+}
+.form-group.precio {
+    max-width: 100px; /* Cambia el valor según tus necesidades */
+    /* O, si prefieres un ancho fijo en píxeles: */
+    /* width: 200px; */
+  }
+  .form-group.precio {
+    display: grid;
+    grid-template-rows: auto 1fr; /* Two rows, the first one for label, the second for input/span */
+    align-items: center; /* Center items vertically within the grid container */
+}
+
+.form-group.precio label {
+    flex: 0; /* This ensures the label doesn't take up extra space */
+    margin-right: 10px; /* Add some spacing between the label and input */
+}
+
+.form-group.precio .input-group {
+    flex: 1; /* This ensures the input and span share the available space */
+    display: flex;
+    align-items: center;
+}
+
+.form-group.precio .precio-input {
+    flex: 1;
+    border-radius: 4px 0 0 4px; /* If you want rounded corners on the left */
+    padding: 8px; /* Adjust padding as needed */
+}
+
+.form-group.precio .moneda {
+    flex: 0; /* This ensures the € symbol doesn't take up extra space */
+    background-color: #f5f5f5; /* Optional background color for the € symbol */
+    padding: 8px; /* Adjust padding as needed */
+    border-radius: 0 4px 4px 0; /* If you want rounded corners on the right */
+}
+.form-group textarea{
+    width: 400px;
+}
