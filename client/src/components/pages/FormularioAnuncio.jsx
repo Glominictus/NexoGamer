@@ -11,7 +11,7 @@ export const FormularioAnuncio = () => {
     const [tipoAnuncio, setTipoAnuncio] = useState("");
     const [plataformaSeleccionada, setPlataformaSeleccionada] = useState(null);
     const [generoSeleccionado, setGeneroSeleccionado] = useState(null);
-
+    
 
     useEffect(() => {
         const cargarCategorias = async () => {
@@ -94,10 +94,11 @@ export const FormularioAnuncio = () => {
         // Paso 1: Recoger datos del formulario
         const nombre = document.querySelector('input[name="nombre"]').value;
         const descripcion = document.querySelector('textarea[name="descripcion"]').value;
-        const precio = tipoAnuncio === 'venta' ? document.querySelector('input[name="precio"]').value : null;
+        const precio = tipoAnuncio === 'venta' ? document.querySelector('input[name="precio"]').value : 0
         const interes = tipoAnuncio === 'intercambio' ? document.querySelector('textarea[name="interes"]').value : null;
         const imagen = document.querySelector('input[name="imagen"]').files[0];
         const idUsuario = localStorage.getItem('id_usuario');
+        const fechaActual = new Date().toISOString();
 
         // Paso 2: Procesar imágenes
         let imageUrl = '';
@@ -113,10 +114,11 @@ export const FormularioAnuncio = () => {
         }
         const idCategoria = parseInt(categoriaSeleccionada);
         const idPlataforma = parseInt(plataformaSeleccionada);
-        const idGenero = parseInt(generoSeleccionado);
+        const idGenero = generoSeleccionado ? parseInt(generoSeleccionado) : undefined;
 
-        if (isNaN(idCategoria) || isNaN(idPlataforma) || isNaN(idGenero)) {
-            console.error('ID de categoría o plataforma no válido');
+
+        if (isNaN(idCategoria) || isNaN(idPlataforma) ||  (generoSeleccionado && isNaN(idGenero))) {
+            console.error('ID de categoría o plataforma no válido o género no valido');
             return;
         }
 
@@ -128,12 +130,14 @@ export const FormularioAnuncio = () => {
             interes,
             id_categoria: idCategoria,
             id_plataforma: idPlataforma,
-            id_genero: idGenero,
             tipo: tipoAnuncio,
             imagenes: imageUrl,
-            id_usuario: parseInt(idUsuario) // Convierte a número si es necesario
+            id_usuario: parseInt(idUsuario),
+            fecha_publicacion: fechaActual
         };
-
+        if (idGenero) {
+            articuloData.id_genero = idGenero;
+        }
         console.log('Datos que se enviarán:', articuloData);
 
 

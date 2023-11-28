@@ -26,7 +26,7 @@ const jwt = require('jsonwebtoken'); // Para generar el token JWT
                 { expiresIn: '1h' } // El token expira en 1 hora
             );
             console.log('Inicio de sesión exitoso');
-            res.json({ token, user: { nickname: user.nickname } });
+            res.json({ token, user: { nickname: user.nickname,   id_usuario: user.id_usuario } });
         } catch (error) {
             console.error('Error en el servidor:', error);
             res.status(500).json({ message: 'Error en el servidor', error: error.message });

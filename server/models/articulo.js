@@ -68,6 +68,13 @@ const Articulo = sequelize.define('Articulo', {
     }
   // No incluyo id_usuario aquí porque estableceremos la relación a continuación
 },
+id_usuario:{
+  type: DataTypes.INTEGER,
+  allowNull: false,
+  references: {
+      model: 'Usuario', // Nombre del modelo de Usuario
+      key: 'id_usuario'
+  }}
 
 },
  {

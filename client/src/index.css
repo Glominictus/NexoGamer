@@ -470,3 +470,6 @@ button[type="submit"]:hover {
 .form-group textarea{
     width: 400px;
 }
+.articulo-img{
+    max-width: 300px;
+}
