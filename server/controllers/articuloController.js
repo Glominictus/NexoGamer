@@ -3,7 +3,9 @@ const articuloController = {
     // Obtener todos los artículos
     getAllArticulos: async (req, res) => {
         try {
-            const articulos = await Articulo.findAll();
+            const userName = req.query.userName;
+            const whereCondition = userName ? {nickname: userName} : {};
+            const articulos = await Articulo.findAll({where: whereCondition});
             res.json(articulos);
         } catch (error) {
             res.status(500).send(error.message);
