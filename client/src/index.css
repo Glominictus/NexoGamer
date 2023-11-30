@@ -156,7 +156,6 @@ body {
 .navbar {
     display: flex;
     justify-content: space-between;
-    /* separa los elementos del menú y los enlaces de sesión */
     align-items: center;
 }
 
@@ -201,7 +200,7 @@ body {
     z-index: 1;
 }
 .dropbtn {
-    background-color: #0044ff; /* Change to match your button color */
+    background-color: #0044ff; 
     color: white;
     padding: 10px;
     font-size:18px;
@@ -224,25 +223,25 @@ body {
   }
 
   .modal {
-    position: fixed; /* Se fija en la pantalla y no se mueve con el scroll */
+    position: fixed; 
     top: 10%;
     right: 7%;
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
-    display: flex; /* Esto permite centrar el contenido fácilmente */
-    align-items: center; /* Centrado vertical */
-    justify-content: center; /* Centrado horizontal */
-    z-index: 10; /* Asegúrate de que sea mayor que el resto de los elementos */
+    background-color: rgba(0, 0, 0, 0.6); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 10; 
 }
 
 
 .modal-content {
-    width: 340px; /* O el ancho que prefieras */
+    width: 340px; 
     padding: 20px;
     height:380px;
-    background: #fff; /* Fondo blanco */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
-    z-index: 11; /* Mayor que el fondo del modal para que resalte */
+    background: #fff; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
+    z-index: 11; 
 }
 
 .modal-title{
@@ -250,49 +249,49 @@ body {
     margin-bottom:20px;
 }
 .icon {
-    margin-right: 8px; /* Espacio entre el ícono y el texto */
-    vertical-align: middle; /* Alinea verticalmente el ícono con el texto */
+    margin-right: 8px; 
+    vertical-align: middle;
     color:blue;
   }
   
-  /* Si necesitas ajustar el tamaño del ícono */
+  
   .bi-person-circle {
-    font-size: 40px; /* O el tamaño que prefieras */
+    font-size: 40px; 
   }
   
 
 .form-group {
     margin-top: 10px;
-    margin-bottom: 15px; /* Espacio entre grupos de formulario */
+    margin-bottom: 15px; 
 }
 
 .form-group label {
-    display: block; /* Hace que la etiqueta aparezca encima del input */
-    margin-bottom: 5px; /* Espacio entre la etiqueta y el input */
+    display: block;
+    margin-bottom: 5px; 
     font-size:12px;
     font-weight: bolder;
 }
 
 .form-group input {
-    width: 100%; /* Hace que el input ocupe el ancho completo del grupo de formulario */
-    padding: 8px; /* Añade algo de padding para que el input sea más fácil de interactuar */
-    margin-bottom: 10px; /* Espacio después del input */
-    border: 1px solid #ddd; /* Borde sutil */
-    border-radius: 4px; /* Bordes redondeados */
+    width: 100%; 
+    padding: 8px; 
+    margin-bottom: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
 }
 
 button[type="submit"] {
-    padding: 10px; /* Añade padding al botón */
-    border: none; /* Elimina el borde */
-    border-radius: 4px; /* Bordes redondeados */
-    background-color: #0056b3; /* Color de fondo */
-    color: white; /* Color de texto */
-    margin-bottom: 10px; /* Espacio después del botón */
-    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+    padding: 10px; 
+    border: none; 
+    border-radius: 4px; 
+    background-color: #0056b3; 
+    color: white; 
+    margin-bottom: 10px; 
+    cursor: pointer; 
 }
 
 button[type="submit"]:hover {
-    background-color: #004494; /* Oscurece el botón al pasar el mouse */
+    background-color: #004494; 
 }
 .action-group {
     display: flex;
@@ -325,25 +324,25 @@ button[type="submit"]:hover {
 }
 
 .modal-register {
-    position: fixed; /* Se fija en la pantalla y no se mueve con el scroll */
+    position: fixed; 
     top: 10%;
     right: 7%;
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
-    display: flex; /* Esto permite centrar el contenido fácilmente */
-    align-items: center; /* Centrado vertical */
-    justify-content: center; /* Centrado horizontal */
-    z-index: 10; /* Asegúrate de que sea mayor que el resto de los elementos */
+    background-color: rgba(0, 0, 0, 0.6); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 10; 
 }
 
 
 .modal-content-register {
-    width: 340px; /* O el ancho que prefieras */
+    width: 340px; 
     padding: 20px;
     height:520px;
-    background: #fff; /* Fondo blanco */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
-    z-index: 11; /* Mayor que el fondo del modal para que resalte */
+    background: #fff;
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
+    z-index: 11; 
 }
 .error{
     color:red;
@@ -391,81 +390,79 @@ button[type="submit"]:hover {
 
 .form-container form {
     margin-top: 20px;
-    width: 30%; /* Ancho del formulario */
-    padding: 20px; /* Espaciado interior para el formulario */
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Opcional: sombra para dar profundidad */
-    background-color: white; /* Opcional: fondo del formulario */
-    border-radius: 10px; /* Opcional: bordes redondeados */
+    width: 30%; 
+    padding: 20px; 
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); 
+    background-color: white; 
+    border-radius: 10px; 
 }
 
 .form-group {
-    margin-bottom: 15px; /* Espacio entre grupos de formularios */
+    margin-bottom: 15px; 
 }
 
 .form-group label {
-    display: block; /* Hace que la etiqueta aparezca encima del input/select */
-    margin-bottom: 5px; /* Espacio entre la etiqueta y el input/select */
+    display: block; 
+    margin-bottom: 5px;
 }
 
 .form-group input[type="text"],
 .form-group select,
 .form-group textarea {
-    width: 100%; /* Hace que el input/select/textarea ocupe el ancho completo */
-    padding: 8px; /* Añade algo de padding para que sea más fácil de interactuar */
-    border: 1px solid #ddd; /* Borde sutil */
-    border-radius: 4px; /* Bordes redondeados */
+    width: 100%;
+    padding: 8px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
 }
 
 .radio-group {
- margin-bottom: 15px; /* Espacio entre el grupo de radio y otros elementos */
+ margin-bottom: 15px; 
 }
 
 .radio-group label {
-    margin-right: 20px; /* Espacio entre cada botón de radio */
-    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+    margin-right: 20px; 
+    cursor: pointer; 
 }
 
 .radio-group input[type="radio"] {
     margin-top: 10px;
-    margin-right: 5px; /* Espacio entre el botón de radio y su etiqueta */
+    margin-right: 5px; 
 }
 .form-group textarea {
-    height: 150px; /* Altura inicial */
-    resize: none; /* Permite al usuario cambiar la altura */
+    height: 150px; 
+    resize: none; 
 }
 .form-group.precio {
-    max-width: 100px; /* Cambia el valor según tus necesidades */
-    /* O, si prefieres un ancho fijo en píxeles: */
-    /* width: 200px; */
+    max-width: 100px; 
   }
   .form-group.precio {
     display: grid;
-    grid-template-rows: auto 1fr; /* Two rows, the first one for label, the second for input/span */
-    align-items: center; /* Center items vertically within the grid container */
+    grid-template-rows: auto 1fr; 
+    align-items: center; 
 }
 
 .form-group.precio label {
-    flex: 0; /* This ensures the label doesn't take up extra space */
-    margin-right: 10px; /* Add some spacing between the label and input */
+    flex: 0; 
+    margin-right: 10px; 
 }
 
 .form-group.precio .input-group {
-    flex: 1; /* This ensures the input and span share the available space */
+    flex: 1; 
     display: flex;
     align-items: center;
 }
 
 .form-group.precio .precio-input {
     flex: 1;
-    border-radius: 4px 0 0 4px; /* If you want rounded corners on the left */
-    padding: 8px; /* Adjust padding as needed */
+    border-radius: 4px 0 0 4px; 
+    padding: 8px;
 }
 
 .form-group.precio .moneda {
-    flex: 0; /* This ensures the € symbol doesn't take up extra space */
-    background-color: #f5f5f5; /* Optional background color for the € symbol */
-    padding: 8px; /* Adjust padding as needed */
-    border-radius: 0 4px 4px 0; /* If you want rounded corners on the right */
+    flex: 0; 
+    background-color: #f5f5f5; 
+    padding: 8px; 
+    border-radius: 0 4px 4px 0; 
 }
 .form-group textarea{
     width: 400px;

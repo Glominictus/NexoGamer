@@ -1,8 +1,8 @@
 // authController.js
 require('dotenv').config();
-const User = require('../models/usuario'); // Modelo de usuario que interactúa con la base de datos
-const bcrypt = require('bcryptjs'); // Para verificar la contraseña
-const jwt = require('jsonwebtoken'); // Para generar el token JWT
+const User = require('../models/usuario'); 
+const bcrypt = require('bcryptjs'); 
+const jwt = require('jsonwebtoken'); 
 
 
     exports.login = async (req, res) => {
@@ -22,8 +22,8 @@ const jwt = require('jsonwebtoken'); // Para generar el token JWT
 
             const token = jwt.sign(
                 { userId: user.id },
-                process.env.JWT_SECRET, // Deberías tener esto en una variable de entorno
-                { expiresIn: '1h' } // El token expira en 1 hora
+                process.env.JWT_SECRET, 
+                { expiresIn: '1h' } // 
             );
             console.log('Inicio de sesión exitoso');
             res.json({ token, user: { nickname: user.nickname,   id_usuario: user.id_usuario } });

@@ -12,7 +12,7 @@ const Consola = sequelize.define('Consola', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  // Puedes agregar más atributos aquí según tu esquema de base de datos
+
 }, {
   tableName: 'consolas',
   timestamps: false

@@ -34,7 +34,7 @@ const articuloController = {
     // Crear un nuevo artículo
     createArticulo: async (req, res) => {
         try {
-            console.log('Datos recibidos para el artículo:', req.body); // Imprime los datos recibidos
+            console.log('Datos recibidos para el artículo:', req.body); 
             const nuevoArticulo = await Articulo.create(req.body);
             res.status(201).json(nuevoArticulo);
         } catch (error) {

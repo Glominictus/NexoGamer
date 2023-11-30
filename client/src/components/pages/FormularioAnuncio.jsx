@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-
-
-
 export const FormularioAnuncio = () => {
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
     const [categorias, setCategorias] = useState([]);
@@ -18,8 +15,8 @@ export const FormularioAnuncio = () => {
             try {
                 const response = await fetch('http://localhost:3000/api/categorias/');
                 const data = await response.json();
-                console.log(data); // Depuración para ver la estructura de datos
-                setCategorias(data); // Asegúrate de que 'data' es un arreglo
+                console.log(data); 
+                setCategorias(data); 
             } catch (error) {
                 console.error("Error al cargar categorías: ", error);
             }
@@ -32,8 +29,8 @@ export const FormularioAnuncio = () => {
             try {
                 const response = await fetch('http://localhost:3000/api/plataformas/');
                 const data = await response.json();
-                console.log(data); // Depuración para ver la estructura de datos
-                setPlataforma(data); // Asegúrate de que 'data' es un arreglo
+                console.log(data); 
+                setPlataforma(data); 
             } catch (error) {
                 console.error("Error al cargar categorías: ", error);
             }
@@ -45,8 +42,8 @@ export const FormularioAnuncio = () => {
             try {
                 const response = await fetch('http://localhost:3000/api/generos/');
                 const data = await response.json();
-                console.log(data); // Depuración para ver la estructura de datos
-                setGenero(data); // Asegúrate de que 'data' es un arreglo
+                console.log(data); 
+                setGenero(data);
             } catch (error) {
                 console.error("Error al cargar categorías: ", error);
             }
@@ -67,7 +64,7 @@ export const FormularioAnuncio = () => {
         }
     };
     const handlePlataformaChange = (e) => {
-        // Almacenar el valor numérico del ID de la plataforma
+      
         const nombreSeleccionado = e.target.value
         const plataformaCorrespondiente = plataforma.find(plataforma => plataforma.nombre === nombreSeleccionado);
         if (plataformaCorrespondiente) {
@@ -91,7 +88,7 @@ export const FormularioAnuncio = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Paso 1: Recoger datos del formulario
+        
         const nombre = document.querySelector('input[name="nombre"]').value;
         const descripcion = document.querySelector('textarea[name="descripcion"]').value;
         const precio = tipoAnuncio === 'venta' ? document.querySelector('input[name="precio"]').value : 0
@@ -100,7 +97,7 @@ export const FormularioAnuncio = () => {
         const idUsuario = localStorage.getItem('id_usuario');
         const fechaActual = new Date().toISOString();
 
-        // Paso 2: Procesar imágenes
+        
         let imageUrl = '';
         if (imagen) {
             const imageForm = new FormData();
@@ -122,7 +119,7 @@ export const FormularioAnuncio = () => {
             return;
         }
 
-        // Paso 3: Preparar datos para el envío
+       
         const articuloData = {
             nombre,
             descripcion,
@@ -141,7 +138,7 @@ export const FormularioAnuncio = () => {
         console.log('Datos que se enviarán:', articuloData);
 
 
-        // Paso 4: Enviar datos al servidor
+       
         const response = await fetch('http://localhost:3000/api/articulos/', {
             method: 'POST',
             headers: {
@@ -150,14 +147,14 @@ export const FormularioAnuncio = () => {
             body: JSON.stringify(articuloData)
         });
 
-        // Paso 5: Manejar la respuesta
+        
         if (response.ok) {
             const responseData = await response.json();
             console.log('Artículo creado con éxito:', responseData);
-            // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+            
         } else {
             console.error('Error al crear el artículo:', await response.text());
-            // Mostrar un mensaje de error al usuario
+           
         }
     };
 

@@ -5,7 +5,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { ModalWindow } from '../pages/ModalWindow';
 import { RegistroUsuarioModal } from '../pages/RegistroUsuarioModal';
 const DropDownMenu = ({ items, label }) => {
-    const [isOpen, setIsOpen] = useState(false); // Añade esta línea para definir el estado
+    const [isOpen, setIsOpen] = useState(false); 
 
     return (
         <div className="dropdown" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>

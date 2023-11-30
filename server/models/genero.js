@@ -14,7 +14,7 @@ const Genero = sequelize.define('Genero', {
   }
 }, {
   tableName: 'genero',
-  timestamps: false // Omitir si tu tabla no tiene campos de timestamps automáticos
+  timestamps: false 
 });
 
 module.exports = Genero;

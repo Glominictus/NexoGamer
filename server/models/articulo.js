@@ -44,7 +44,7 @@ const Articulo = sequelize.define('Articulo', {
     }
   },
   imagenes: {
-    type: DataTypes.TEXT, // Esto puede ser una URL o un JSON con URLs si hay múltiples imágenes
+    type: DataTypes.TEXT, 
     allowNull: true
   },
   tipo: {
@@ -53,33 +53,33 @@ const Articulo = sequelize.define('Articulo', {
   },
   id_genero: {
     type: DataTypes.INTEGER,
-    allowNull: true, // o false, dependiendo de si cada artículo debe tener un género
+    allowNull: true, //
     references: {
-        model: 'Genero', // Nombre del modelo de Género
+        model: 'Genero', 
         key: 'id_genero'
     }
 },
   id_plataforma: {
     type: DataTypes.INTEGER,
-    allowNull: true, // o false, dependiendo de si cada opción debe tener una plataforma
+    allowNull: true, //
     references: {
-        model: 'Plataforma', // Nombre del modelo de Plataforma
+        model: 'Plataforma',
         key: 'id_plataforma'
     }
-  // No incluyo id_usuario aquí porque estableceremos la relación a continuación
+ 
 },
 id_usuario:{
   type: DataTypes.INTEGER,
   allowNull: false,
   references: {
-      model: 'Usuario', // Nombre del modelo de Usuario
+      model: 'Usuario', 
       key: 'id_usuario'
   }}
 
 },
  {
   tableName: 'articulos',
-  timestamps: false // Si no deseas los campos createdAt y updatedAt
+  timestamps: false 
 });
 
 // Establece la relación Uno a Muchos con Categoria

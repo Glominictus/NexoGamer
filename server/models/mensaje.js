@@ -2,7 +2,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/sequelize');
 
-// Asumiendo que tienes un modelo Usuario para representar a los usuarios
+
 const Usuario = require('./usuario');
 
 const Mensaje = sequelize.define('Mensaje', {

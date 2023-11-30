@@ -8,11 +8,11 @@ export const MisAnuncios = () => {
   const [articulos, setArticulos] = useState([]);
   
   useEffect(() => {
-      // Obtener el ID del usuario del localStorage
+     
       const idUsuario  = localStorage.getItem('id_usuario');
       console.log(idUsuario)
 
-      // Realizar la petición al backend con el ID del usuario
+     
       fetch(`http://localhost:3000/api/articulos?userId=${idUsuario}`)
       .then(response => response.json())
       .then(data => setArticulos(data))

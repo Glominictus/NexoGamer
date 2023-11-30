@@ -20,7 +20,7 @@ export const RegistroUsuarioModal = ({ isOpen, onClose }) => {
             return;
         }
         if (emailError || nicknameError || passwordError) {
-            // Si hay algún error de validación, no proceder con el registro
+            
             console.log("Hay errores de validación");
             return;
         }
@@ -36,7 +36,7 @@ export const RegistroUsuarioModal = ({ isOpen, onClose }) => {
             const data = await response.json();
             console.log("Respuesta recibida:", data);
             if (!response.ok) {
-                // Maneja los errores del registro aquí
+               
                 setError(data.message || 'Error al registrar el usuario');
                 console.log("Error en la respuesta del registro");
             } else {
@@ -44,7 +44,7 @@ export const RegistroUsuarioModal = ({ isOpen, onClose }) => {
                 console.log("Mensaje de éxito establecido:", successMessage);
             }
         } catch (error) {
-            // Maneja errores de red aquí
+            
             setError('Error de conexión al registrar el usuario');
             console.log("Error de conexión:", error);
         }
@@ -53,8 +53,7 @@ export const RegistroUsuarioModal = ({ isOpen, onClose }) => {
 
 const handleEmailBlur = async () => {
     console.log("Comprobando email:", email);
-    // Comprobar si el email ya está en uso
-    // Esto es un ejemplo, deberás ajustarlo según tu API
+
     const response = await fetch('http://localhost:3000/api/check-email', {
         method: 'POST',
         headers: {
@@ -71,8 +70,7 @@ const handleEmailBlur = async () => {
 
 const handleNicknameBlur = async () => {
     console.log("Comprobando nickname:", nickname);
-    // Comprobar si el nickname ya está en uso
-    // Ajusta según tu API
+
     const response = await fetch('http://localhost:3000/api/check-nickname', {
         method: 'POST',
         headers: {
@@ -89,13 +87,13 @@ const handleNicknameBlur = async () => {
 
 const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    // Limpia el mensaje de error al empezar a escribir de nuevo
+    
     if (passwordError) setPasswordError('');
 };
 
 const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
-    // Limpia el mensaje de error al empezar a escribir de nuevo
+   
     if (passwordError) setPasswordError('');
 };
 

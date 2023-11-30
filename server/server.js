@@ -21,10 +21,10 @@ const loginRoutes = require ('./routes/loginRoutes');
 const authMiddleware = require('./middleware/authMiddleware');
 
 // Middlewares
-app.use(express.json()); // Para parsear application/json
+app.use(express.json()); 
 app.use(cors());
 app.use(helmet());
-app.use(express.urlencoded({ extended: true })); // Para parsear application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true })); 
 app.use('/api', imageRoutes);
 app.use('/api/articulos', articuloRoutes);
 app.use('/api/categorias', categoriaRoutes);

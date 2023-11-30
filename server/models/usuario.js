@@ -77,7 +77,7 @@ const Usuario = sequelize.define(
       allowNull: true,
     },
     valoracion_promedio: {
-      type: DataTypes.DECIMAL(10, 2), // Asegúrate de que el tipo de dato sea adecuado para la precisión que necesitas
+      type: DataTypes.DECIMAL(10, 2), 
       allowNull: true,
     },
     num_valoraciones: {
