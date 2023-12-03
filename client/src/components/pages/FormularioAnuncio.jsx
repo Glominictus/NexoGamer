@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import { useNavigate} from 'react-router-dom'
 export const FormularioAnuncio = () => {
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
     const [categorias, setCategorias] = useState([]);
@@ -8,7 +8,7 @@ export const FormularioAnuncio = () => {
     const [tipoAnuncio, setTipoAnuncio] = useState("");
     const [plataformaSeleccionada, setPlataformaSeleccionada] = useState(null);
     const [generoSeleccionado, setGeneroSeleccionado] = useState(null);
-    
+    const navigate = useNavigate();
 
     useEffect(() => {
         const cargarCategorias = async () => {
@@ -151,6 +151,7 @@ export const FormularioAnuncio = () => {
         if (response.ok) {
             const responseData = await response.json();
             console.log('Artículo creado con éxito:', responseData);
+            navigate('/MisAnuncios'); 
             
         } else {
             console.error('Error al crear el artículo:', await response.text());

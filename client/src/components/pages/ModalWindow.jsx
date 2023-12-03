@@ -1,11 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-export const ModalWindow = ({ isOpen, onClose, onLoginSuccess }) => {
-    
+export const ModalWindow = ({ isOpen, onClose, onLoginSuccess,openRegisterModal}) => {
+
+    const [loginError, setLoginError] = useState(false);
+
+    const handleCloseClick = (e) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+    useEffect(() => {
+        const handleEsc = (e) => {
+            if (e.key === 'Escape') {
+                onClose();
+            }
+        };
+
+        window.addEventListener('keydown', handleEsc);
+       
+
+        return () => {
+            window.removeEventListener('keydown', handleEsc);
+        };
+    }, [onClose]);
 
     const handleLogin = async (event) => {
         event.preventDefault();
+        setLoginError(false);
 
         const email = event.target.email.value;
         const password = event.target.password.value;
@@ -28,40 +50,45 @@ export const ModalWindow = ({ isOpen, onClose, onLoginSuccess }) => {
             onClose();
         } else {
             console.error("Inicio de sesión fallida:", data.error);
+            setLoginError(true);
         }
     }
     if (!isOpen) return null;
 
     return (
-        <div className="modal">
+        <div className="modal" onClick={handleCloseClick}>
             <div className="modal-content">
 
-
-                <h2 className='modal-title'>
-                    <span className="icon">
-                        <i className="bi bi-person-circle"></i>
-                    </span>
-                    Entra en NexoGamer</h2>
-
+                <div className='modal-header'>
+                    <h2 className='modal-title'>
+                        <span className="icon">
+                            <i className="bi bi-person-circle"></i>
+                        </span>
+                        Entra en NexoGamer</h2>
+                    <button className="close-button" onClick={onClose} aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <hr />
                 <form className='form-login' onSubmit={handleLogin}>
                     <div className="form-group">
                         <label>Correo Electrónico:</label>
                         <input type="email" name="email" required />
+
                     </div>
                     <div className="form-group">
                         <label>Contraseña:</label>
                         <input type="password" name="password" required />
+                        {loginError && <div className="error-message">Correo electrónico o contraseña incorrecta</div>}
                     </div>
                     <div className="form-group action-group">
                         <button type="submit">Iniciar Sesión</button>
                         <a href="/recuperar-contraseña" className="forgot-password">¿Olvidaste tu contraseña?</a>
                     </div>
                     <hr />
-                    <div>
+                    <div className="modal-footer-container">
                         <h3 className='modal-footer'>Regístrate aquí</h3>
-                        <button onClick={() => {/* código para manejar registro */ }}>Registrarse</button>
-                        <button onClick={onClose}>Cerrar</button>
+                        <button className='btn-register' onClick={openRegisterModal}>Registrarse</button>
                     </div>
                 </form>
 

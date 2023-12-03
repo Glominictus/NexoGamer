@@ -1,21 +1,33 @@
 const Articulo = require('../models/articulo');
 const articuloController = {
     // Obtener todos los artículos
-    getAllArticulos: async (req, res) => {
-        try {
-            let articulos;
-            if (req.query.userId) {
-                articulos = await Articulo.findAll({
-                    where: { id_usuario: req.query.userId }
-                });
-            } else {
-                articulos = await Articulo.findAll();
-            }
-            res.json(articulos);
-        } catch (error) {
-            res.status(500).send(error.message);
+// Obtener todos los artículos
+getAllArticulos: async (req, res) => {
+    try {
+        let opciones = {
+            order: [['fecha_publicacion', 'DESC']]
+        };
+
+        if (req.query.limit) {
+            opciones.limit = parseInt(req.query.limit);
         }
-    },
+
+        if (req.query.userId) {
+            opciones.where = { id_usuario: req.query.userId };
+        }
+
+        // Agregar filtrado por tipo de artículo si se proporciona
+        if (req.query.tipo) {
+            opciones.where = { ...opciones.where, tipo: req.query.tipo };
+        }
+
+        const articulos = await Articulo.findAll(opciones);
+        res.json(articulos);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+},
+
 
     // Obtener un artículo específico por ID
     getArticuloById: async (req, res) => {

@@ -46,19 +46,19 @@ export const BarNav = () => {
         { label: 'Juegos', path: '/intercambio/juegos' },
         { label: 'Consolas', path: '/intercambio/consolas' },
         { label: 'Accesorios', path: '/intercambio/accesorios' },
-        { label: 'Merchandising', path: '/intercambio/merchandising' },
+        /*{ label: 'Merchandising', path: '/intercambio/merchandising' },*/
     ];
 
     const segundaManoItems = [
         { label: 'Juegos', path: '/segunda-mano/juegos' },
         { label: 'Consolas', path: '/segunda-mano/consolas' },
         { label: 'Accesorios', path: '/segunda-mano/accesorios' },
-        { label: 'Merchandising', path: '/segunda-mano/merchandising' },
+       /* { label: 'Merchandising', path: '/segunda-mano/merchandising' },*/
     ];
     const perfilItems = [
-        { label: 'Mi Perfil', path: '/perfil' },
+       /* { label: 'Mi Perfil', path: '/perfil' },*/
         { label: 'Mis anuncios', path: '/MisAnuncios' },
-        { label: 'Mis compras', path: '/compras' },
+       /* { label: 'Mis compras', path: '/compras' },*/
         { label: 'Cerrar sesión', action: handleLogout },
 
     ]
@@ -83,8 +83,8 @@ export const BarNav = () => {
                                 <option value="opcion1">Todas las secciones</option>
                                 <option value="opcion2">Intercambio</option>
                                 <option value="opcion3">2ª Mano</option>
-                                <option value="opcion4">Comunidad</option>
-                                <option value="opcion5">Soporte</option>
+                                {/*<option value="opcion4">Comunidad</option>
+                                <option value="opcion5">Soporte</option>*/}
                             </select>
                             <input type="text" className="buscador-input" placeholder="Buscar..." />
                             <button type="submit" className="buscador-button">
@@ -100,18 +100,18 @@ export const BarNav = () => {
                         <NavLink to="/" className="nav-item">Inicio</NavLink>
                         <DropDownMenu items={intercambioItems} label="Intercambio" />
                         <DropDownMenu items={segundaManoItems} label="2ª Mano" />
-                        <NavLink to="/soporte" className="nav-item">Soporte</NavLink>
+                       {/*} <NavLink to="/soporte" className="nav-item">Soporte</NavLink>*/}
                     </div>
                     <div className='login'>
                         {!isLoggedIn ? (
                             // Mostrar si NO está autenticado
                             <>
-                                <NavLink to="/login" className="nav-item login" onClick={openModal}>
+                                <button className="nav-item login" onClick={openModal}>
                                     Iniciar Sesión
-                                </NavLink>
-                                <NavLink to="/registro" className="nav-item register" onClick={openRegisterModal}>
+                                </button>
+                                <button className="nav-item register" onClick={openRegisterModal}>
                                     Registrarse
-                                </NavLink>
+                                </button>
                             </>
                         ) : (
                             // Mostrar si está autenticado
@@ -123,7 +123,7 @@ export const BarNav = () => {
                                 {/* <NavLink to="/" className="nav-item logout" onClick={handleLogout}>Cerrar Sesión</NavLink>*/}
                             </>
                         )}
-                        <ModalWindow isOpen={isModalOpen} onClose={closeModal} onLoginSuccess={updateUserName} />
+                        <ModalWindow isOpen={isModalOpen} onClose={closeModal} onLoginSuccess={updateUserName} openRegisterModal={openRegisterModal} />
                         <RegistroUsuarioModal isOpen={isRegisterModalOpen} onClose={closeRegisterModal} />
                     </div>
 
