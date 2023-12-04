@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-export const ModalWindow = ({ isOpen, onClose, onLoginSuccess,openRegisterModal}) => {
+export const ModalWindow = ({ isOpen, onClose, onLoginSuccess, openRegisterModal }) => {
 
     const [loginError, setLoginError] = useState(false);
 
@@ -18,7 +18,7 @@ export const ModalWindow = ({ isOpen, onClose, onLoginSuccess,openRegisterModal}
         };
 
         window.addEventListener('keydown', handleEsc);
-       
+
 
         return () => {
             window.removeEventListener('keydown', handleEsc);

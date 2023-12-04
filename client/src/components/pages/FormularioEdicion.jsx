@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams ,useNavigate} from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 export const FormularioEdicion = () => {
     const [nombre, setNombre] = useState('');
     const [descripcion, setDescripcion] = useState('');
@@ -19,7 +19,6 @@ export const FormularioEdicion = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Carga inicial de categorías, plataformas y géneros
         const cargarDatosIniciales = async () => {
             try {
                 const resCategorias = await fetch('http://localhost:3000/api/categorias/');
@@ -48,7 +47,7 @@ export const FormularioEdicion = () => {
                 const data = await response.json();
                 setNombre(data.nombre);
                 setDescripcion(data.descripcion);
-                setPrecio(data.precio.toString()); // Asegúrate de convertir a String si es necesario
+                setPrecio(data.precio.toString());
                 setInteres(data.interes);
                 setCategoriaSeleccionada(data.id_categoria);
                 setPlataformaSeleccionada(data.id_plataforma);
@@ -61,7 +60,7 @@ export const FormularioEdicion = () => {
                 console.error("Error al cargar datos del anuncio: ", error);
             }
         };
-        
+
         cargarDatosAnuncio();
 
     }, [idArticulo]);
@@ -147,7 +146,7 @@ export const FormularioEdicion = () => {
         if (response.ok) {
             const responseData = await response.json();
             console.log('Artículo actualizado con éxito:', responseData);
-            navigate('/MisAnuncios'); 
+            navigate('/MisAnuncios');
         } else {
             console.error('Error al actualizar el artículo:', await response.text());
         }

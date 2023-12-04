@@ -4,8 +4,9 @@ import imagenLogo from '../../../public/logoWh.png'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { ModalWindow } from '../pages/ModalWindow';
 import { RegistroUsuarioModal } from '../pages/RegistroUsuarioModal';
+
 const DropDownMenu = ({ items, label }) => {
-    const [isOpen, setIsOpen] = useState(false); 
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div className="dropdown" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
@@ -14,17 +15,15 @@ const DropDownMenu = ({ items, label }) => {
                 <div className="dropdown-content">
                     {items.map((item, index) => (
                         item.path ?
-                        <NavLink to={item.path} key={index}>{item.label}</NavLink>
-                        :
-                        <a href="#" onClick={item.action} key={index}>{item.label}</a>
+                            <NavLink to={item.path} key={index}>{item.label}</NavLink>
+                            :
+                            <a href="#" onClick={item.action} key={index}>{item.label}</a>
                     ))}
                 </div>
             )}
         </div>
     );
 };
-
-
 
 export const BarNav = () => {
     const [userName, setUserName] = useState(localStorage.getItem('userName'));
@@ -36,12 +35,13 @@ export const BarNav = () => {
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
     const openRegisterModal = () => setIsRegisterModalOpen(true);
     const closeRegisterModal = () => setIsRegisterModalOpen(false);
-    
+
     const handleLogout = () => {
         localStorage.removeItem('userToken');
         localStorage.removeItem('userName');
-        setUserName(null); // Actualiza el estado para reflejar que el usuario ya no está autenticado
+        setUserName(null);
     }
+
     const intercambioItems = [
         { label: 'Juegos', path: '/intercambio/juegos' },
         { label: 'Consolas', path: '/intercambio/consolas' },
@@ -50,24 +50,25 @@ export const BarNav = () => {
     ];
 
     const segundaManoItems = [
-        { label: 'Juegos', path:"/segunda-mano/juegos" },
+        { label: 'Juegos', path: "/segunda-mano/juegos" },
         { label: 'Consolas', path: '/segunda-mano/consolas' },
         { label: 'Accesorios', path: '/segunda-mano/accesorios' },
-       /* { label: 'Merchandising', path: '/segunda-mano/merchandasing' },*/
+        /* { label: 'Merchandising', path: '/segunda-mano/merchandasing' },*/
     ];
-    const perfilItems = [
-       /* { label: 'Mi Perfil', path: '/perfil' },*/
-        { label: 'Mis anuncios', path: '/MisAnuncios' },
-       /* { label: 'Mis compras', path: '/compras' },*/
-        { label: 'Cerrar sesión', action: handleLogout },
 
+    const perfilItems = [
+        { label: 'Mis anuncios', path: '/MisAnuncios' },
+        { label: 'Cerrar sesión', action: handleLogout },
+        /* { label: 'Mi Perfil', path: '/perfil' },*/
+        /* { label: 'Mis compras', path: '/compras' },*/
     ]
 
-   
+
 
     return (
 
         <div className="main__nav">
+
             <div className="main__nav_logo">
                 <a href="index.html">
                     <img id="logo" src={imagenLogo} alt="Logo de NexoGamer" />
@@ -100,11 +101,12 @@ export const BarNav = () => {
                         <NavLink to="/" className="nav-item">Inicio</NavLink>
                         <DropDownMenu items={intercambioItems} label="Intercambio" />
                         <DropDownMenu items={segundaManoItems} label="2ª Mano" />
-                       {/*} <NavLink to="/soporte" className="nav-item">Soporte</NavLink>*/}
+                        {/*} <NavLink to="/soporte" className="nav-item">Soporte</NavLink>*/}
                     </div>
+
                     <div className='login'>
                         {!isLoggedIn ? (
-                            // Mostrar si NO está autenticado
+                            
                             <>
                                 <button className="nav-item login" onClick={openModal}>
                                     Iniciar Sesión
@@ -114,7 +116,7 @@ export const BarNav = () => {
                                 </button>
                             </>
                         ) : (
-                            // Mostrar si está autenticado
+                            
                             <>
                                 <div className='perfil-dropdown'>
                                     <DropDownMenu className="dropdown-perfil" items={perfilItems} label={userName} />
@@ -123,6 +125,7 @@ export const BarNav = () => {
                                 {/* <NavLink to="/" className="nav-item logout" onClick={handleLogout}>Cerrar Sesión</NavLink>*/}
                             </>
                         )}
+                        
                         <ModalWindow isOpen={isModalOpen} onClose={closeModal} onLoginSuccess={updateUserName} openRegisterModal={openRegisterModal} />
                         <RegistroUsuarioModal isOpen={isRegisterModalOpen} onClose={closeRegisterModal} />
                     </div>

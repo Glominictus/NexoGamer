@@ -15,6 +15,7 @@ export const ArticuloCard = ({ articulo, onVerDetalles, mostrarOpciones, onEdita
     const verDetalles = () => {
         navigate(`/articulos/${articulo.id_articulo}`);
     };
+
     const editarArticulo = () => {
         onEditar(articulo);
     };
@@ -34,7 +35,7 @@ export const ArticuloCard = ({ articulo, onVerDetalles, mostrarOpciones, onEdita
 
             if (response.ok) {
                 console.log("Artículo eliminado con éxito.");
-                onActualizarAnuncios(); // Actualiza la lista de anuncios
+                onActualizarAnuncios();
             } else {
                 console.error("Error al eliminar el artículo.");
             }
@@ -63,21 +64,28 @@ export const ArticuloCard = ({ articulo, onVerDetalles, mostrarOpciones, onEdita
 
         cargarPlataformas();
     }, []);
+
     const nombrePlataforma = plataformas[articulo.id_plataforma] || 'Desconocida';
+
     return (
+
         <div className='articulo-card'>
+
             <div className='articulo-cabecera'>
                 <h3>{articulo.nombre}</h3>
             </div>
+
             <div className='articulo-imagen'>
                 <img src={articulo.imagenes} alt={articulo.nombre} />
             </div>
+
             <div className='articulo-contenido'>
                 <p>Plataforma: {nombrePlataforma}</p>
                 {console.log(articulo.plataforma)}
                 {articulo.tipo === 'Venta' && <p>Precio: {articulo.precio}€</p>}
                 {articulo.tipo === 'Intercambio' && <p>Interés: {articulo.interes}</p>}
             </div>
+
             <div className='articulo-boton'>
                 <button onClick={verDetalles}>Ver Detalles</button>
                 {mostrarOpciones && (
@@ -87,6 +95,7 @@ export const ArticuloCard = ({ articulo, onVerDetalles, mostrarOpciones, onEdita
                     </>
                 )}
             </div>
+            
             <Dialog
                 open={open}
                 onClose={handleClose}

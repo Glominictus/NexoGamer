@@ -1,6 +1,5 @@
 const Articulo = require('../models/articulo');
 const articuloController = {
-    // Obtener todos los artículos
 // Obtener todos los artículos
 getAllArticulos: async (req, res) => {
     try {
