@@ -46,14 +46,14 @@ export const BarNav = () => {
         { label: 'Juegos', path: '/intercambio/juegos' },
         { label: 'Consolas', path: '/intercambio/consolas' },
         { label: 'Accesorios', path: '/intercambio/accesorios' },
-        /*{ label: 'Merchandising', path: '/intercambio/merchandising' },*/
+        /*{ label: 'Merchandising', path: '/intercambio/merchandasing' },*/
     ];
 
     const segundaManoItems = [
-        { label: 'Juegos', path: '/segunda-mano/juegos' },
+        { label: 'Juegos', path:"/segunda-mano/juegos" },
         { label: 'Consolas', path: '/segunda-mano/consolas' },
         { label: 'Accesorios', path: '/segunda-mano/accesorios' },
-       /* { label: 'Merchandising', path: '/segunda-mano/merchandising' },*/
+       /* { label: 'Merchandising', path: '/segunda-mano/merchandasing' },*/
     ];
     const perfilItems = [
        /* { label: 'Mi Perfil', path: '/perfil' },*/

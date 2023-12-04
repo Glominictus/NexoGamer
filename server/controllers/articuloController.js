@@ -15,11 +15,13 @@ getAllArticulos: async (req, res) => {
         if (req.query.userId) {
             opciones.where = { id_usuario: req.query.userId };
         }
-
-        // Agregar filtrado por tipo de artículo si se proporciona
         if (req.query.tipo) {
             opciones.where = { ...opciones.where, tipo: req.query.tipo };
         }
+         if (req.query.categoria) {
+            opciones.where = { ...opciones.where, id_categoria: req.query.categoria };
+        }
+
 
         const articulos = await Articulo.findAll(opciones);
         res.json(articulos);

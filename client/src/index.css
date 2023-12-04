@@ -700,3 +700,25 @@ button.submit-btn{
 .articulo-boton .boton-borrar:hover{
     background-color: #9e1e2b;
 }
+
+.footer-container {
+    margin-top:50px;
+    background-color: #0a215c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  .footer-info, .footer-rights {
+    margin-top: 10px;
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
