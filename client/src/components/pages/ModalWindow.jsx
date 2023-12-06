@@ -46,6 +46,7 @@ export const ModalWindow = ({ isOpen, onClose, onLoginSuccess, openRegisterModal
             localStorage.setItem('userToken', data.token);
             localStorage.setItem('userName', data.user.nickname);
             localStorage.setItem('id_usuario', data.user.id_usuario);
+            localStorage.setItem('fotoPerfilUrl', data.user.foto_perfil_url);
             onLoginSuccess();
             onClose();
         } else {
@@ -69,7 +70,7 @@ export const ModalWindow = ({ isOpen, onClose, onLoginSuccess, openRegisterModal
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <hr />
+                
                 <form className='form-login' onSubmit={handleLogin}>
                     <div className="form-group">
                         <label>Correo Electrónico:</label>
@@ -82,8 +83,7 @@ export const ModalWindow = ({ isOpen, onClose, onLoginSuccess, openRegisterModal
                         {loginError && <div className="error-message">Correo electrónico o contraseña incorrecta</div>}
                     </div>
                     <div className="form-group action-group">
-                        <button type="submit">Iniciar Sesión</button>
-                        <a href="/recuperar-contraseña" className="forgot-password">¿Olvidaste tu contraseña?</a>
+                        <button className="login-btn" type="submit">Iniciar Sesión</button>
                     </div>
                     <hr />
                     <div className="modal-footer-container">

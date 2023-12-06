@@ -4,6 +4,12 @@ import imagenLogo from '../../../public/logoWh.png'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { ModalWindow } from '../pages/ModalWindow';
 import { RegistroUsuarioModal } from '../pages/RegistroUsuarioModal';
+import avatarDefault from '../../../public/avatarDefault.png'
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DropDownMenu = ({ items, label }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +42,18 @@ export const BarNav = () => {
     const openRegisterModal = () => setIsRegisterModalOpen(true);
     const closeRegisterModal = () => setIsRegisterModalOpen(false);
 
+
+    const obtenerUrlAvatar = () => {
+        const url = localStorage.getItem('fotoPerfilUrl');
+        // Comprobar si url es una cadena no vacía y parece una URL válida
+        if (url && url.trim() !== '' && (url.startsWith('http://') || url.startsWith('https://'))) {
+            return url;
+        }
+        return avatarDefault;
+    };
+
+    const avatarUrl = obtenerUrlAvatar();
+
     const handleLogout = () => {
         localStorage.removeItem('userToken');
         localStorage.removeItem('userName');
@@ -63,76 +81,41 @@ export const BarNav = () => {
         /* { label: 'Mis compras', path: '/compras' },*/
     ]
 
-
-
-    return (
-
-        <div className="main__nav">
-
-            <div className="main__nav_logo">
-                <a href="index.html">
-                    <img id="logo" src={imagenLogo} alt="Logo de NexoGamer" />
-                </a>
-            </div>
-
-            <div className="nav-container main__nav_menu">
-                <div className="buscador-container">
-                    <div className="buscador-inner">
-                        <form action="#" method="get">
-                            <label htmlFor="buscador-select" className="visually-hidden">Categoría</label>
-                            <select id="buscador-select" className="buscador-select">
-                                <option value="opcion1">Todas las secciones</option>
-                                <option value="opcion2">Intercambio</option>
-                                <option value="opcion3">2ª Mano</option>
-                                {/*<option value="opcion4">Comunidad</option>
-                                <option value="opcion5">Soporte</option>*/}
-                            </select>
-                            <input type="text" className="buscador-input" placeholder="Buscar..." />
-                            <button type="submit" className="buscador-button">
-                                <i className="bi bi-search"></i>
-                                <span className="visually-hidden">Buscar</span>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-                <nav className="navbar">
-                    <div className='navbar-container'>
-                        <NavLink to="/" className="nav-item">Inicio</NavLink>
-                        <DropDownMenu items={intercambioItems} label="Intercambio" />
-                        <DropDownMenu items={segundaManoItems} label="2ª Mano" />
-                        {/*} <NavLink to="/soporte" className="nav-item">Soporte</NavLink>*/}
-                    </div>
-
-                    <div className='login'>
-                        {!isLoggedIn ? (
-                            
+return (
+    <Navbar bg="dark" variant="dark" expand="lg">
+        <Container>
+            <Navbar.Brand href="/">
+                <img src={imagenLogo} alt="Logo de NexoGamer" style={{ width: '120px' }} />
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                    <Nav.Link className='inicio-link' as={NavLink} to="/">Inicio</Nav.Link>
+                    <DropDownMenu items={intercambioItems} label="Intercambio" />
+                    <DropDownMenu items={segundaManoItems} label="2ª Mano" />
+                </Nav>
+                <Nav>
+                    {!isLoggedIn ? (
+                        <>
+                            <Nav.Link onClick={openModal}>Iniciar Sesión</Nav.Link>
+                            <Nav.Link onClick={openRegisterModal}>Registrarse</Nav.Link>
+                        </>
+                    ) : (
+                        <NavDropdown title={
                             <>
-                                <button className="nav-item login" onClick={openModal}>
-                                    Iniciar Sesión
-                                </button>
-                                <button className="nav-item register" onClick={openRegisterModal}>
-                                    Registrarse
-                                </button>
+                                <img src={avatarUrl || avatarDefault} alt="Avatar" className="avatar-icon" />
+                                <span className="username">{userName}</span>
                             </>
-                        ) : (
-                            
-                            <>
-                                <div className='perfil-dropdown'>
-                                    <DropDownMenu className="dropdown-perfil" items={perfilItems} label={userName} />
-                                </div>
-
-                                {/* <NavLink to="/" className="nav-item logout" onClick={handleLogout}>Cerrar Sesión</NavLink>*/}
-                            </>
-                        )}
-                        
-                        <ModalWindow isOpen={isModalOpen} onClose={closeModal} onLoginSuccess={updateUserName} openRegisterModal={openRegisterModal} />
-                        <RegistroUsuarioModal isOpen={isRegisterModalOpen} onClose={closeRegisterModal} />
-                    </div>
-
-                </nav>
-
-            </div >
-        </div >
-    )
-}
+                        } id="perfil-dropdown">
+                            <NavDropdown.Item as={NavLink} to="/MisAnuncios">Mis anuncios</NavDropdown.Item>
+                            <NavDropdown.Item onClick={handleLogout}>Cerrar sesión</NavDropdown.Item>
+                        </NavDropdown>
+                    )}
+                </Nav>
+            </Navbar.Collapse>
+        </Container>
+        <ModalWindow isOpen={isModalOpen} onClose={closeModal} onLoginSuccess={updateUserName} openRegisterModal={openRegisterModal} />
+        <RegistroUsuarioModal isOpen={isRegisterModalOpen} onClose={closeRegisterModal} />
+    </Navbar>
+);
+};

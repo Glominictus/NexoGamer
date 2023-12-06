@@ -26,7 +26,7 @@ const jwt = require('jsonwebtoken');
                 { expiresIn: '1h' } // 
             );
             console.log('Inicio de sesión exitoso');
-            res.json({ token, user: { nickname: user.nickname,   id_usuario: user.id_usuario } });
+            res.json({ token, user: { nickname: user.nickname,id_usuario: user.id_usuario, foto_perfil_url: user.foto_perfil_url  } });
         } catch (error) {
             console.error('Error en el servidor:', error);
             res.status(500).json({ message: 'Error en el servidor', error: error.message });

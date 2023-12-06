@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import imagenCorp from '../../assets/images/imagenCorp.png'
 export const FormularioAnuncio = () => {
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
     const [categorias, setCategorias] = useState([]);
@@ -8,6 +9,7 @@ export const FormularioAnuncio = () => {
     const [tipoAnuncio, setTipoAnuncio] = useState("");
     const [plataformaSeleccionada, setPlataformaSeleccionada] = useState(null);
     const [generoSeleccionado, setGeneroSeleccionado] = useState(null);
+    const [errores, setErrores] = useState({});
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -15,8 +17,8 @@ export const FormularioAnuncio = () => {
             try {
                 const response = await fetch('http://localhost:3000/api/categorias/');
                 const data = await response.json();
-                console.log(data); 
-                setCategorias(data); 
+                console.log(data);
+                setCategorias(data);
             } catch (error) {
                 console.error("Error al cargar categorías: ", error);
             }
@@ -29,8 +31,8 @@ export const FormularioAnuncio = () => {
             try {
                 const response = await fetch('http://localhost:3000/api/plataformas/');
                 const data = await response.json();
-                console.log(data); 
-                setPlataforma(data); 
+                console.log(data);
+                setPlataforma(data);
             } catch (error) {
                 console.error("Error al cargar categorías: ", error);
             }
@@ -42,7 +44,7 @@ export const FormularioAnuncio = () => {
             try {
                 const response = await fetch('http://localhost:3000/api/generos/');
                 const data = await response.json();
-                console.log(data); 
+                console.log(data);
                 setGenero(data);
             } catch (error) {
                 console.error("Error al cargar categorías: ", error);
@@ -64,7 +66,7 @@ export const FormularioAnuncio = () => {
         }
     };
     const handlePlataformaChange = (e) => {
-      
+
         const nombreSeleccionado = e.target.value
         const plataformaCorrespondiente = plataforma.find(plataforma => plataforma.nombre === nombreSeleccionado);
         if (plataformaCorrespondiente) {
@@ -84,11 +86,37 @@ export const FormularioAnuncio = () => {
             console.error('No se encontró un genero con ese nombre');
         }
     }
+    const validarFormulario = () => {
+        let erroresTemp = {};
+        if (!tipoAnuncio) erroresTemp.tipoAnuncio = 'Elige un tipo de anuncio';
+        if (!categoriaSeleccionada) erroresTemp.categoria = 'Selecciona una categoría';
+        if (!plataformaSeleccionada) erroresTemp.plataforma = 'Selecciona una plataforma';
+        if (categoriaSeleccionada === 1 && !generoSeleccionado) erroresTemp.genero = 'Selecciona un género';
+        if (!document.querySelector('input[name="nombre"]').value) erroresTemp.nombre = 'Ingresa un nombre';
+        if (!document.querySelector('textarea[name="descripcion"]').value) erroresTemp.descripcion = 'Ingresa una descripción';
+        if (tipoAnuncio === "venta") {
+            const precio = document.querySelector('input[name="precio"]').value;
+            if (!precio) {
+                erroresTemp.precio = 'Ingresa un precio';
+            } else if (isNaN(precio) || precio < 0) {
+                erroresTemp.precio = 'El precio debe ser un número válido y no inferior a 0';
+            }
+        }
+    
+        if (tipoAnuncio === "intercambio" && !document.querySelector('textarea[name="interes"]').value) {
+            erroresTemp.interes = 'Describe lo que te interesa';
+        }
+        setErrores(erroresTemp);
+        return Object.keys(erroresTemp).length === 0;
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!validarFormulario()) {
+            console.error('Formulario inválido');
+            return;
+        }
 
-        
         const nombre = document.querySelector('input[name="nombre"]').value;
         const descripcion = document.querySelector('textarea[name="descripcion"]').value;
         const precio = tipoAnuncio === 'venta' ? document.querySelector('input[name="precio"]').value : 0
@@ -96,9 +124,9 @@ export const FormularioAnuncio = () => {
         const imagen = document.querySelector('input[name="imagen"]').files[0];
         const idUsuario = localStorage.getItem('id_usuario');
         const fechaActual = new Date().toISOString();
-
         
-        let imageUrl = '';
+
+        let imageUrl = imagenCorp;
         if (imagen) {
             const imageForm = new FormData();
             imageForm.append('image', imagen);
@@ -114,12 +142,12 @@ export const FormularioAnuncio = () => {
         const idGenero = generoSeleccionado ? parseInt(generoSeleccionado) : undefined;
 
 
-        if (isNaN(idCategoria) || isNaN(idPlataforma) ||  (generoSeleccionado && isNaN(idGenero))) {
+        if (isNaN(idCategoria) || isNaN(idPlataforma) || (generoSeleccionado && isNaN(idGenero))) {
             console.error('ID de categoría o plataforma no válido o género no valido');
             return;
         }
 
-       
+
         const articuloData = {
             nombre,
             descripcion,
@@ -138,7 +166,7 @@ export const FormularioAnuncio = () => {
         console.log('Datos que se enviarán:', articuloData);
 
 
-       
+
         const response = await fetch('http://localhost:3000/api/articulos/', {
             method: 'POST',
             headers: {
@@ -147,15 +175,15 @@ export const FormularioAnuncio = () => {
             body: JSON.stringify(articuloData)
         });
 
-        
+
         if (response.ok) {
             const responseData = await response.json();
             console.log('Artículo creado con éxito:', responseData);
-            navigate('/MisAnuncios'); 
-            
+            navigate('/MisAnuncios');
+
         } else {
             console.error('Error al crear el artículo:', await response.text());
-           
+
         }
     };
 
@@ -206,7 +234,7 @@ export const FormularioAnuncio = () => {
                         {categoriaSeleccionada === 1 && (
                             <>
                                 <label htmlFor="genero">Género:</label>
-                                <select name="genero" id="genero"  onChange={handleGeneroChange} >
+                                <select name="genero" id="genero" onChange={handleGeneroChange} >
                                     <option value="" disabled selected>Elige el género</option>
                                     {genero.map((genero) => (
                                         <option key={genero.id} value={genero.id}>
@@ -248,6 +276,9 @@ export const FormularioAnuncio = () => {
                     </div>
                     <div className='form-group'>
                         <button type="submit" onClick={handleSubmit}>Enviar Anuncio</button>
+                        {Object.values(errores).map((error, index) => (
+                            <div key={index} className="error-message">{error}</div>
+                        ))}
                     </div>
 
                 </form>
