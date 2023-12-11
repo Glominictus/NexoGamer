@@ -10,7 +10,15 @@ export const RegistroUsuarioModal = ({ isOpen, onClose }) => {
     const [nicknameError, setNicknameError] = useState('');
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    useEffect(() => {
+        if (successMessage) {
+            const timer = setTimeout(() => {
+                onClose();
+            }, 3000);
 
+            return () => clearTimeout(timer);
+        }
+    }, [successMessage, onClose]);
     const handleCloseClick = (e) => {
         if (e.target === e.currentTarget) {
             onClose();
@@ -58,9 +66,8 @@ export const RegistroUsuarioModal = ({ isOpen, onClose }) => {
 
                 setError(data.message || 'Error al registrar el usuario');
                 console.log("Error en la respuesta del registro");
-            } else {
+            }else {
                 setSuccessMessage('Has sido registrado correctamente.');
-                console.log("Mensaje de éxito establecido:", successMessage);
             }
         } catch (error) {
 
@@ -136,7 +143,9 @@ export const RegistroUsuarioModal = ({ isOpen, onClose }) => {
                     </button>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    {successMessage && <div className="success-message">{successMessage}</div>}
+
+                {successMessage && <div className="success-message">{successMessage}</div>}
+                {error && <div className="error-message">{error}</div>}
                     <div className="form-group">
                         <label>Correo Electrónico:</label>
                         <input type="email" name="email" required onChange={(e) => setEmail(e.target.value)} onBlur={handleEmailBlur} />

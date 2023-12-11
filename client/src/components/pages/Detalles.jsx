@@ -63,7 +63,7 @@ export const Detalles = () => {
             
             <div className='detalle-articulo'>
                 <h2>{articulo.nombre}</h2>
-                <img  className='detalle-img' src={articulo.imagenes} alt={articulo.nombre} />
+                <img  className='detalle-img'src={articulo.imagenes} alt={articulo.nombre} />
                 <p><strong>Descripción:</strong> {articulo.descripcion}</p>
 
                 {articulo.tipo === 'Venta' && <p><strong>Precio:</strong> {articulo.precio}€</p>}
